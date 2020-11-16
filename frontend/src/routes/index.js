@@ -3,11 +3,11 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Homepage from '../pages/Homepage';
 import Dashboard from '../pages/Dashboard';
-import EditQuestion from '../pages/EditQuestion';
 import EditQuiz from '../pages/EditQuiz';
 import PublicRoute from '../components/PublicRoute';
 import PrivateRoute from '../components/PrivateRoute';
 import JoinGame from '../pages/JoinGame';
+import EditQuestion from '../pages/EditQuestion';
 
 const routes = [
   <PublicRoute restricted component={Login} path="/login" exact />,

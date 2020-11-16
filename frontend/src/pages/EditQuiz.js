@@ -23,6 +23,8 @@ const EditQuiz = (props) => {
   // this should contain all of the questions from the quiz we want to check out.
   const { questions } = React.useContext(StoreContext);
   const [allQuestions, setAllQuestions] = questions;
+  const { editQuestion } = React.useContext(StoreContext);
+  const [preset, setPreset] = editQuestion;
   const { match: { params } } = props;
   const history = useHistory();
   const handleMedia = (file) => (file || logo);
@@ -38,6 +40,7 @@ const EditQuiz = (props) => {
   }, [params.gid, questions, setAllQuestions]);
 
   const QuestionCard = () => {
+    // preload the values for the question we want to edit
     const handleRedirect = (qId) => {
       history.push(`edit/${params.gid}/${qId}`);
     };
@@ -82,8 +85,19 @@ const EditQuiz = (props) => {
   const classes = useStyles();
 
   const handleNewQuestion = () => {
-    console.log(allQuestions.length);
-    history.push(`${params.gid}/${allQuestions.length}`);
+    // if we're adding a new question, set the preset values so we can load it in the page
+    const questionPreload = {
+      id: allQuestions.length,
+      question: '',
+      qType: 'single',
+      points: 10,
+      answers: [{ id: 1, text: '', correct: false }, { id: 2, text: '', correct: false }],
+      media: '',
+    };
+    setPreset(questionPreload);
+    console.log(preset);
+    setAllQuestions(allQuestions.push(questionPreload));
+    history.push(`${params.gid}/${allQuestions.length - 1}`);
   };
 
   return (

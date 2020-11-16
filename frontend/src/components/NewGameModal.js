@@ -36,8 +36,9 @@ const NewGameModal = ({ setOpen }) => {
       const res = await api.post('admin/quiz/new', { headers: { 'content-type': 'application/json', Authorization: getToken() }, body: JSON.stringify({ name: title }) });
       if (res.quizId) {
         setOpen(false);
-        setQuiz(res.quizId);
+        setQuiz(res);
         history.push(`/edit/${res.quizId}`);
+        console.log(history);
       } else {
         // handle errors
       }
