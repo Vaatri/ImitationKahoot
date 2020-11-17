@@ -37,7 +37,7 @@ const NewGameModal = ({ setOpen }) => {
       if (res.quizId) {
         setOpen(false);
         setQuiz(res);
-        history.push(`/edit/${res.quizId}`);
+        history.push(`edit/${res.quizId}`);
         console.log(history);
       } else {
         // handle errors

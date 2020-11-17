@@ -109,7 +109,7 @@ const EditQuestion = (props) => {
       },
     });
     console.log(res);
-    history.push(`/edit/${params.gid}`);
+    history.push(`edit/${params.gid}`);
   };
 
   return (
