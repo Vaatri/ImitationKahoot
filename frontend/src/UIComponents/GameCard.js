@@ -85,7 +85,7 @@ const GameCard = ({
   };
 
   const viewResult = () => {
-    history.push(`/admin/session/${code}/results`);
+    history.push(`/session/${code}/results`);
     setCode(0);
   };
 
